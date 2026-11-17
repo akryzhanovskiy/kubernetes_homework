@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fruchi-config
+  namespace: fruchi
+data:
+  ENVIRONMENT: "development"
+  LOG_LEVEL: "INFO"
+  POSTGRES_HOST: "postgres"
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: "fruchi"
+  POSTGRES_USER: "fruchi"
+  MINIO_ENDPOINT: "http://minio:9000"
+  MINIO_BUCKET: "fruchi-media"
+  COOKIE_SECURE: "false"
+  ADMIN_INITIAL_EMAIL: "admin@fruchi.com.ua"
+  SITE_URL: "https://fruchi.com.ua"
+  STOREFRONT_INTERNAL_URL: "http://storefront:8080"
+  ADMIN_PUBLIC_URL: "http://localhost:8081"
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fruchi-frontend-config
+  namespace: fruchi
+data:
+  BACKEND_URL: "http://backend.fruchi.svc.cluster.local:8000"
+  MEDIA_URL: "http://minio.fruchi.svc.cluster.local:9000"
+  MEDIA_BUCKET: "fruchi-media"
